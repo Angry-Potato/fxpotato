@@ -10,9 +10,11 @@ module FxPotato
     raise "Must specify date" if date.nil?
     raise "Must specify from_currency" if from_currency.nil?
     raise "Must specify to_currency" if to_currency.nil?
-    
+
     from = RateStore.get(self.repo, date, from_currency)
+    raise "Unable to find #{from_currency} on #{date}" if from.nil?
     to = RateStore.get(self.repo, date, to_currency)
+    raise "Unable to find #{to_currency} on #{date}" if to.nil?
     RateCalculator.calculate(from, to)
   end
 

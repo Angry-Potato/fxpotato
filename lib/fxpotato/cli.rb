@@ -8,7 +8,11 @@ module FxPotato
     method_option :date, :aliases => "-d", :desc => "A specific date to get the rate for, e.g. -d 2017-05-29"
     def getrate(base, target)
       date = options[:date] || Date.today
-      puts "Exchange rate from #{base} to #{target} on #{date}: #{FxPotato.at(date, base, target)}"
+      begin
+        puts "Exchange rate from #{base} to #{target} on #{date}: #{FxPotato.at(date, base, target)}"
+      rescue RuntimeError => message
+        puts message
+      end
     end
   end
 end

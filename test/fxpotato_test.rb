@@ -47,4 +47,10 @@ class FxPotatoTest < Minitest::Test
     expected_02_GBP_to_USD = FxPotato::RateCalculator.calculate(GBP_06_02, USD_06_02)
     assert_equal expected_02_GBP_to_USD, FxPotato.at(Date.new(2017, 6, 2), 'GBP', 'USD')
   end
+
+  def test_at_raises_on_unfound_data
+    assert_raises(Exception) { FxPotato.at(Date.new(3333, 6, 2), 'GBP', 'USD') }
+    assert_raises(Exception) { FxPotato.at(Date.new(2017, 6, 2), 'narp', 'USD') }
+    assert_raises(Exception) { FxPotato.at(Date.new(2017, 6, 2), 'GBP', 'nil') }
+  end
 end
