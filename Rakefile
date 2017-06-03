@@ -2,7 +2,7 @@ require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'fxpotato'
 
-Rake::TestTask.new(:test) do |t|
+Rake::TestTask.new(:unit_test) do |t|
   t.libs << 'test'
   t.libs << 'lib'
   t.test_files = FileList['test/**/*_test.rb']
@@ -25,7 +25,12 @@ end
 
 desc "Build, test, bump version, and release in a container"
 task :docker_release do
-  sh %{ docker build --force-rm -t fx-potato . && docker run --rm fx-potato bundle exec cucumber features && rake test && gem bump && rake release }
+  sh %{ docker build --force-rm -t fx-potato . && docker run --rm fx-potato rake test && gem bump && rake release }
 end
 
-task :default => :test
+desc "Run feature and unit tests"
+task :test => :unit_test do
+  sh %{ bundle exec cucumber features }
+end
+
+task :default => :unit_test
