@@ -4,6 +4,7 @@ require 'fxpotato/xml_repo'
 require 'fxpotato/rate_store'
 require 'fxpotato/rate_fetcher'
 require 'fxpotato/rate_calculator'
+require "fxpotato/railtie" if defined?(Rails)
 
 module FxPotato
   def self.at(date, from_currency, to_currency)

@@ -1,16 +1,12 @@
 require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'fxpotato'
+Dir.glob('lib/tasks/*.rake').each { |r| import r }
 
 Rake::TestTask.new(:unit_test) do |t|
   t.libs << 'test'
   t.libs << 'lib'
   t.test_files = FileList['test/**/*_test.rb']
-end
-
-desc "Update crontab"
-task :update_crontab do
-  sh %{ whenever --update-crontab }
 end
 
 desc "Clear crontab"
