@@ -8,6 +8,7 @@ module FxPotato
     end
 
     def local_data
+      FxPotato::fetch_new_rates if !File.exists? File.join(DATA_DIRECTORY, DATA_FILE)
       source_file = File.join(DATA_DIRECTORY, DATA_FILE)
       File.open(source_file)
     end
