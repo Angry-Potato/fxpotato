@@ -15,4 +15,4 @@ RUN bundle install
 
 COPY . /usr/src/app/
 
-CMD rake test
+CMD bundle exec cucumber features && rake test

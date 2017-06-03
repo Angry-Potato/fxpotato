@@ -25,7 +25,7 @@ end
 
 desc "Build, test, bump version, and release in a container"
 task :docker_release do
-  sh %{ docker build --force-rm -t fx-potato . && docker run --rm fx-potato rake test && gem bump && rake release }
+  sh %{ docker build --force-rm -t fx-potato . && docker run --rm fx-potato bundle exec cucumber features && rake test && gem bump && rake release }
 end
 
 task :default => :test
