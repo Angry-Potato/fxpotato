@@ -1,5 +1,5 @@
 require "fxpotato/version"
 
-module Fxpotato
+module FxPotato
   # Your code goes here...
 end

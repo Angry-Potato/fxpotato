@@ -1,8 +1,8 @@
 require "test_helper"
 
-class FxpotatoTest < Minitest::Test
+class FxPotatoTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::Fxpotato::VERSION
+    refute_nil ::FxPotato::VERSION
   end
 
   def test_it_does_something_useful

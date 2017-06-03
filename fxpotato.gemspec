@@ -5,7 +5,7 @@ require "fxpotato/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "fxpotato"
-  spec.version       = Fxpotato::VERSION
+  spec.version       = FxPotato::VERSION
   spec.authors       = ["Liam Stupid Name Humphreys"]
   spec.email         = ["liam.humphreys1989@gmail.com"]
 
