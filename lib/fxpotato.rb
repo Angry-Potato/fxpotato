@@ -1,4 +1,5 @@
 require 'fxpotato/version'
+require 'fxpotato/rate_calculator'
 
 module FxPotato
   def self.at(date, from_currency, to_currency)
