@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency 'nokogiri', '~> 1.6'
+  spec.add_dependency 'whenever', "~> 0.9"
 end
