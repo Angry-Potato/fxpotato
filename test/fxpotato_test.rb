@@ -34,12 +34,17 @@ class FxPotatoTest < Minitest::Test
   end
 
   def test_at_returns_something
-    assert FxPotato.at(Date.today, 'GBP', 'USD')
+    assert FxPotato.at(Date.new(2017, 6, 2), 'GBP', 'USD')
   end
 
   def test_at_raises_on_nil_inputs
     assert_raises(Exception) { FxPotato.at(nil, 'GBP', 'USD') }
     assert_raises(Exception) { FxPotato.at(Date.today, nil, 'USD') }
     assert_raises(Exception) { FxPotato.at(Date.today, 'GBP', nil) }
+  end
+
+  def test_at_returns_correct_rates
+    expected_02_GBP_to_USD = FxPotato::RateCalculator.calculate(GBP_06_02, USD_06_02)
+    assert_equal expected_02_GBP_to_USD, FxPotato.at(Date.new(2017, 6, 2), 'GBP', 'USD')
   end
 end

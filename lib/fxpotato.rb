@@ -7,7 +7,9 @@ module FxPotato
     raise "Must specify date" if date.nil?
     raise "Must specify from_currency" if from_currency.nil?
     raise "Must specify to_currency" if to_currency.nil?
-    true
+    from = @rate_store.get(date, from_currency)
+    to = @rate_store.get(date, to_currency)
+    RateCalculator.calculate(from, to)
   end
 
   module_function
