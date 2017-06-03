@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.3.1
+
+build:
+  ci:
+    - bundle install
+    - rake docker_test
+
+  on_success:
+    - rake bump_release

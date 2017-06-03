@@ -7,6 +7,11 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList['test/**/*_test.rb']
 end
 
+desc "Bump version and release gem"
+task :bump_release do
+  sh %{ gem bump && rake release }
+end
+
 desc "Build and test in a container"
 task :docker_test do
   sh %{ docker build --force-rm -t fx-potato . && docker run -it --rm fx-potato }
