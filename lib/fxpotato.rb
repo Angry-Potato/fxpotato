@@ -13,8 +13,10 @@ module FxPotato
 
     from = RateStore.get(self.repo, date, from_currency)
     raise "Unable to find #{from_currency} on #{date}" if from.nil?
+
     to = RateStore.get(self.repo, date, to_currency)
     raise "Unable to find #{to_currency} on #{date}" if to.nil?
+
     RateCalculator.calculate(from, to)
   end
 
