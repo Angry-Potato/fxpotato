@@ -1,4 +1,4 @@
-require "fxpotato/version"
+require 'fxpotato/version'
 
 module FxPotato
   # Your code goes here...
