@@ -26,7 +26,7 @@ class FxPotatoTest < Minitest::Test
   </gesmes:Envelope>"
 
   def setup
-    FxPotato.rate_store = FxPotato::RateStore.new(TEST_XML)
+    FxPotato.repo = FxPotato::XmlRepo.new(TEST_XML)
   end
 
   def test_that_it_has_a_version_number

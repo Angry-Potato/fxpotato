@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RateStoreTest < Minitest::Test
+class XmlRepoTest < Minitest::Test
   USD_06_02 = 1.1217
   GBP_06_02 = 0.87268
   USD_06_01 = 1.1219
@@ -25,17 +25,17 @@ class RateStoreTest < Minitest::Test
   </gesmes:Envelope>"
 
   def setup
-    @store = FxPotato::RateStore.new(TEST_XML)
+    @repo = FxPotato::XmlRepo.new(TEST_XML)
   end
 
   def test_get_returns_something
-    assert @store.get(Date.new(2017, 6, 1), 'GBP')
+    assert @repo.find(Date.new(2017, 6, 1), 'GBP')
   end
 
   def test_get_returns_the_correct_rate
-    assert_equal GBP_06_02, @store.get(Date.new(2017, 6, 2), 'GBP')
-    assert_equal USD_06_02, @store.get(Date.new(2017, 6, 2), 'USD')
-    assert_equal GBP_06_01, @store.get(Date.new(2017, 6, 1), 'GBP')
-    assert_equal USD_06_01, @store.get(Date.new(2017, 6, 1), 'USD')
+    assert_equal GBP_06_02, @repo.find(Date.new(2017, 6, 2), 'GBP')
+    assert_equal USD_06_02, @repo.find(Date.new(2017, 6, 2), 'USD')
+    assert_equal GBP_06_01, @repo.find(Date.new(2017, 6, 1), 'GBP')
+    assert_equal USD_06_01, @repo.find(Date.new(2017, 6, 1), 'USD')
   end
 end

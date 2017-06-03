@@ -1,5 +1,6 @@
 require 'fxpotato/version'
 require 'fxpotato/paths'
+require 'fxpotato/xml_repo'
 require 'fxpotato/rate_store'
 require 'fxpotato/rate_fetcher'
 require 'fxpotato/rate_calculator'
@@ -9,8 +10,8 @@ module FxPotato
     raise "Must specify date" if date.nil?
     raise "Must specify from_currency" if from_currency.nil?
     raise "Must specify to_currency" if to_currency.nil?
-    from = @rate_store.get(date, from_currency)
-    to = @rate_store.get(date, to_currency)
+    from = RateStore.get(@repo, date, from_currency)
+    to = RateStore.get(@repo, date, to_currency)
     RateCalculator.calculate(from, to)
   end
 
@@ -21,6 +22,6 @@ module FxPotato
   end
 
   module_function
-  def rate_store; @rate_store ||= RateStore.new() end
-  def rate_store= v; @rate_store = v end
+  def repo; @repo ||= XmlRepo end
+  def repo= v; @repo = v end
 end
