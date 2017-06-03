@@ -25,6 +25,11 @@ class RateStoreTest < Minitest::Test
   end
 
   def test_get_returns_something
-    assert FxPotato::RateStore.get(Date.new(2017, 6, 1), 'GBP')
+    assert @store.get(Date.new(2017, 6, 1), 'GBP')
+  end
+
+  def test_get_returns_the_correct_rate
+    assert_equal 0.8723, @store.get(Date.new(2017, 6, 1), 'GBP')
+    assert_equal 1.1219, @store.get(Date.new(2017, 6, 1), 'USD')
   end
 end
