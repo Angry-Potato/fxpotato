@@ -9,4 +9,8 @@ module FxPotato
     raise "Must specify to_currency" if to_currency.nil?
     true
   end
+
+  module_function
+  def rate_store; @rate_store ||= RateStore.new() end
+  def rate_store= v; @rate_store = v end
 end
