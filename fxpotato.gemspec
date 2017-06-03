@@ -25,6 +25,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "gem-release", "~> 1.0"
-  
+  spec.add_development_dependency "cucumber", "~> 2.4"
+  spec.add_development_dependency "aruba", "~> 0.14"
+
   spec.add_dependency 'nokogiri', '~> 1.6'
 end
