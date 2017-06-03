@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Liam Stupid Name Humphreys"]
   spec.email         = ["liam.humphreys1989@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Foreign Exchange currency rates looker-upper.}
+  spec.description   = %q{Uses last daily feed from European Central Bank website, and exposes a simple interface to get the conversion rates for one currency to another on a given day.}
+  spec.homepage      = "https://github.com/Angry-Potato/fxpotato"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
