@@ -6,6 +6,3 @@ build:
   ci:
     - bundle install
     - rake docker_test
-
-  on_success:
-    - rake bump_release
