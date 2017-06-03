@@ -1,7 +1,7 @@
 module FxPotato
   class RateCalculator
     def self.calculate(from, to)
-      true
+      to / from
     end
   end
 end
