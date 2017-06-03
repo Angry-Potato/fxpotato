@@ -7,7 +7,7 @@ module FxPotato
     end
 
     config.after_initialize do
-      DATA_DIRECTORY = File.join(Rails.root, "data")
+      FxPotato::DATA_DIRECTORY = File.join(Rails.root, "data")
     end
   end
 end
