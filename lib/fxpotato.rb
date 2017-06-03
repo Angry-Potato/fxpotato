@@ -1,5 +1,7 @@
 require 'fxpotato/version'
 
 module FxPotato
-  # Your code goes here...
+  def self.at(date, from_currency, to_currency)
+    true
+  end
 end
