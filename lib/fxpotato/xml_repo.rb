@@ -15,7 +15,8 @@ module FxPotato
 
     def find(date, currency)
       query = "//Cube[@time=\'#{date.to_s}\']//Cube[@currency=\'#{currency}\']"
-      @data.at_xpath(query)["rate"].to_f
+      result = @data.at_xpath(query)
+      result ? result["rate"].to_f : nil
     end
   end
 end

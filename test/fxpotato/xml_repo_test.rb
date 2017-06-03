@@ -28,14 +28,18 @@ class XmlRepoTest < Minitest::Test
     @repo = FxPotato::XmlRepo.new(TEST_XML)
   end
 
-  def test_get_returns_something
+  def test_find_returns_something
     assert @repo.find(Date.new(2017, 6, 1), 'GBP')
   end
 
-  def test_get_returns_the_correct_rate
+  def test_find_returns_the_correct_rate
     assert_equal GBP_06_02, @repo.find(Date.new(2017, 6, 2), 'GBP')
     assert_equal USD_06_02, @repo.find(Date.new(2017, 6, 2), 'USD')
     assert_equal GBP_06_01, @repo.find(Date.new(2017, 6, 1), 'GBP')
     assert_equal USD_06_01, @repo.find(Date.new(2017, 6, 1), 'USD')
+  end
+
+  def test_find_returns_nil_when_currency_not_found
+    assert_nil @repo.find(Date.new(2017, 6, 1), 'PLOP')
   end
 end
