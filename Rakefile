@@ -9,16 +9,6 @@ Rake::TestTask.new(:unit_test) do |t|
   t.test_files = FileList['test/**/*_test.rb']
 end
 
-desc "Clear crontab"
-task :clear_crontab do
-  sh %{ whenever -c }
-end
-
-desc "Download new exchange rate data"
-task :fetch_new_rates do
-  FxPotato.fetch_new_rates
-end
-
 desc "Bump version and release gem"
 task :bump_release do
   sh %{ gem bump && rake release }
