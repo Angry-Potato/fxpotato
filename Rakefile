@@ -33,9 +33,19 @@ task :docker_test do
   sh %{ docker build --force-rm -t fx-potato . && docker run --rm fx-potato }
 end
 
-desc "Build, test, bump version, and release in a container"
-task :docker_release do
+desc "Build, test, bump patch version, and release in a container"
+task :docker_release_patch do
   sh %{ docker build --force-rm -t fx-potato . && docker run --rm fx-potato rake test && gem bump && rake release }
+end
+
+desc "Build, test, bump minor version, and release in a container"
+task :docker_release_patch do
+  sh %{ docker build --force-rm -t fx-potato . && docker run --rm fx-potato rake test && gem bump --version minor && rake release }
+end
+
+desc "Build, test, bump major version, and release in a container"
+task :docker_release_patch do
+  sh %{ docker build --force-rm -t fx-potato . && docker run --rm fx-potato rake test && gem bump --version major && rake release }
 end
 
 desc "Run feature and unit tests"
