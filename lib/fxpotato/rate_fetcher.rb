@@ -2,7 +2,7 @@ require 'net/http'
 
 module FxPotato
   class RateFetcher
-    def self.fetch_new_rates(source_url, destination)
+    def self.fetch(source_url, destination)
       uri = URI(source_url)
 
       Net::HTTP.start(uri.host, uri.port) do |http|

@@ -1,10 +1,16 @@
 require 'bundler/gem_tasks'
 require 'rake/testtask'
+require 'fxpotato'
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'test'
   t.libs << 'lib'
   t.test_files = FileList['test/**/*_test.rb']
+end
+
+desc "Download new exchange rate data"
+task :fetch_new_rates do
+  FxPotato.fetch_new_rates
 end
 
 desc "Bump version and release gem"
