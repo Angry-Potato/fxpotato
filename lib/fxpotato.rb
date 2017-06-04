@@ -22,8 +22,9 @@ module FxPotato
   end
 
   def self.fetch_new_rates
-    Dir.mkdir DATA_DIRECTORY if !File.exists? DATA_DIRECTORY
-    destination = File.join(DATA_DIRECTORY, DATA_FILE)
+    data_dir = Paths.data_directory(defined?(Rails))
+    Dir.mkdir data_dir if !File.exists? data_dir
+    destination = File.join(data_dir, DATA_FILE)
     RateFetcher.fetch(DATA_SOURCE_URL, destination)
   end
 

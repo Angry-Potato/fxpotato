@@ -5,9 +5,5 @@ module FxPotato
       load 'tasks/update_crontab.rake'
       load 'tasks/clear_crontab.rake'
     end
-
-    config.after_initialize do
-      FxPotato::DATA_DIRECTORY = File.join(Rails.root, "data")
-    end
   end
 end
