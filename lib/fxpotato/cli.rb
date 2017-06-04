@@ -1,6 +1,7 @@
 require 'thor'
 require 'fxpotato'
 require 'date'
+require 'cli_formatter'
 
 module FxPotato
   class CLI < Thor
@@ -9,7 +10,8 @@ module FxPotato
     def getrate(base, target)
       date = options[:date] || Date.today
       begin
-        puts "Exchange rate from #{base} to #{target} on #{date}: #{FxPotato.at(date, base, target)}"
+        fxrate = FxPotato.at(date, base, target)
+        puts CLIFormatter.result(fxrate)
       rescue RuntimeError => message
         puts message
       end

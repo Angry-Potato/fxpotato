@@ -4,21 +4,22 @@ require 'fxpotato/xml_repo'
 require 'fxpotato/rate_store'
 require 'fxpotato/rate_fetcher'
 require 'fxpotato/rate_calculator'
+require 'fxpotato/fxrate'
 require "fxpotato/railtie" if defined?(Rails)
 
 module FxPotato
-  def self.at(date, from_currency, to_currency)
-    raise "Must specify date" if date.nil?
-    raise "Must specify from_currency" if from_currency.nil?
-    raise "Must specify to_currency" if to_currency.nil?
+  def self.at(date, base_key, target_key)
+    base_rate = RateStore.get(self.repo, date, base_key)
+    target_rate = RateStore.get(self.repo, date, target_key)
 
-    from = RateStore.get(self.repo, date, from_currency)
-    raise "Unable to find #{from_currency} on #{date}" if from.nil?
-
-    to = RateStore.get(self.repo, date, to_currency)
-    raise "Unable to find #{to_currency} on #{date}" if to.nil?
-
-    RateCalculator.calculate(from, to)
+    FxRate.new(
+      base_key,
+      base_rate,
+      target_key,
+      target_rate,
+      date,
+      RateCalculator.calculate(base_rate, target_rate)
+    ).serialize
   end
 
   def self.fetch_new_rates
