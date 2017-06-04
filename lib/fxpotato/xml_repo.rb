@@ -2,7 +2,7 @@ require 'nokogiri'
 
 module FxPotato
   class XmlRepo
-    def initialize(data)
+    def initialize(data = nil)
       @data = Nokogiri::XML(data || local_data)
       @data.remove_namespaces!
     end

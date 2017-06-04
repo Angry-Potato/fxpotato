@@ -30,6 +30,6 @@ module FxPotato
   end
 
   module_function
-  def repo; @repo ||= XmlRepo.new(nil) end
+  def repo; @repo ||= XmlRepo.new end
   def repo= v; @repo = v end
 end
