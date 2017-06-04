@@ -25,7 +25,7 @@ module FxPotato
     data_dir = Paths.data_directory(defined?(Rails))
     Dir.mkdir data_dir if !File.exists? data_dir
     destination = File.join(data_dir, DATA_FILE)
-    RateFetcher.fetch(DATA_SOURCE_URL, destination)
+    RateFetcher.fetch(Paths.data_source_url, destination)
   end
 
   module_function
