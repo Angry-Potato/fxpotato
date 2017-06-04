@@ -9,12 +9,15 @@ Feature: FxPotato
 
   Scenario: Nonsense base input
     When I run `fxpotato getrate bitcoin USD -d 2017-06-02`
-    Then the output should contain "Unable to find bitcoin on 2017-06-02"
+    Then the output should contain "Unable to calculate that exchange rate"
+    And the output should contain "Unable to find rate for bitcoin on 2017-06-02"
 
   Scenario: Nonsense target input
     When I run `fxpotato getrate GBP etherium -d 2017-06-02`
-    Then the output should contain "Unable to find etherium on 2017-06-02"
+    Then the output should contain "Unable to calculate that exchange rate"
+    And the output should contain "Unable to find rate for etherium on 2017-06-02"
 
   Scenario: Nonsense date input
     When I run `fxpotato getrate GBP USD -d 2999-06-02`
-    Then the output should contain "Unable to find GBP on 2999-06-02"
+    Then the output should contain "Unable to calculate that exchange rate"
+    And the output should contain "Unable to find rate for GBP on 2999-06-02"

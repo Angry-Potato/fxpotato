@@ -1,7 +1,7 @@
 require 'thor'
 require 'fxpotato'
 require 'date'
-require 'cli_formatter'
+require 'fxpotato/cli_formatter'
 
 module FxPotato
   class CLI < Thor
