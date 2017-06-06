@@ -6,11 +6,13 @@ require 'fxpotato/rate_fetcher'
 require 'fxpotato/rate_calculator'
 require 'fxpotato/fxrate'
 require "fxpotato/railtie" if defined?(Rails)
+require 'date'
 
 module FxPotato
   def self.at(date, base_key, target_key)
     base_key = upcase_if_not_nil(base_key)
     target_key = upcase_if_not_nil(target_key)
+    date ||= Date.today
 
     base_rate = RateStore.get(self.repo, date, base_key)
     target_rate = RateStore.get(self.repo, date, target_key)
