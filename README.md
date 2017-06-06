@@ -90,6 +90,8 @@ fxpotato getrate GBP USD -d 2017-06-02
 
 The `-d` option is not required, and will default to today if not specified.
 
+Or you can use `fxpotato help getrate` to get slightly more detailed help.
+
 ## Development
 To run tests, run the rake task `rake test`, this will run unit and feature tests. If you have docker installed, you can run all tests in a container using the rake task `rake docker_test`. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
