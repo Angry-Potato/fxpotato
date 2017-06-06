@@ -2,7 +2,7 @@
 
 The Foreign Exchange currency rates looker-upper. Potato style.
 
-Uses last daily feed from European Central Bank website, and exposes a simple interface to get the conversion rates for one currency to another on a given day.
+Uses last daily feed from [European Central Bank](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml), and exposes a simple interface to get the conversion rates for one currency to another on a given day.
 
 An example of this gem in use can be found at [FxPotatoWeb](https://fxpotatoweb.herokuapp.com/). Source code for the site is [here](https://github.com/Angry-Potato/fxpotatoweb).
 
