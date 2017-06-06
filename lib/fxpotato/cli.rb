@@ -10,7 +10,7 @@ module FxPotato
     def getrate(base, target)
       date = options[:date] || Date.today
       begin
-        fxrate = FxPotato.at(date, base, target)
+        fxrate = FxPotato.at(base, target, date)
         puts CLIFormatter.result(fxrate)
       rescue RuntimeError => message
         puts message

@@ -9,7 +9,7 @@ require "fxpotato/railtie" if defined?(Rails)
 require 'date'
 
 module FxPotato
-  def self.at(date, base_key, target_key)
+  def self.at(base_key, target_key, date = nil)
     base_key = upcase_if_not_nil(base_key)
     target_key = upcase_if_not_nil(target_key)
     date ||= Date.today

@@ -50,7 +50,7 @@ Assuming you successfully followed the install instructions, and are still readi
 Now. Using the FxPotato gem in your app is as simple as:
 
 ```
-FxPotato.at(date, 'GBP', 'USD')
+FxPotato.at('GBP', 'USD', date)
 ```
 
 The date parameter is a `Date` object, which will default to today if nil, and the currency keys are simply strings. The gem is case insensitive, so don't worry about that.
