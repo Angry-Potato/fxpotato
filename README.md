@@ -7,6 +7,7 @@ Uses last daily feed from [European Central Bank](http://www.ecb.europa.eu/stats
 An example of this gem in use can be found at [FxPotatoWeb](https://fxpotatoweb.herokuapp.com/). Source code for the site is [here](https://github.com/Angry-Potato/fxpotatoweb).
 
 [Available on RubyGems.org](https://rubygems.org/gems/fxpotato)
+
 [And on DockerHub](https://hub.docker.com/r/angrypotato/fx-potato/)
 
 ## Installation
