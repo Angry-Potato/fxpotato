@@ -44,6 +44,36 @@ If you decide this was a big mistake and wish to purify your crontab of fxpotato
 
 The details of the cron job is configurable, as mentioned before, by editing the `config/schedule.rb` file as per the [whenever documentation](https://github.com/javan/whenever#example-schedulerb-file).
 
+### In your ruby app
+Assuming you successfully followed the install instructions, and are still reading this exciting documentation with much reckless abandon, steady yourself!
+
+Now. Using the FxPotato gem in your app is as simple as:
+
+```
+FxPotato.at(date, 'GBP', 'USD')
+```
+
+The date parameter is a `Date` object, which will default to today if nil, and the currency keys are simply strings. The gem is case insensitive, so don't worry about that.
+
+This will return a hash that looks like this:
+
+```
+{
+  "date" => #<Date: 2017-06-06 ((2457911j,0s,0n),+0s,2299161j)>, // <-- a Date object
+  "base" => {
+    "key" => "GBP",
+    "rate" => 0.87268
+  },
+  "target" => {
+    "key" => "USD",
+    "rate" => 1.1217
+  },
+  "rate" => 1.2853508731722967
+}
+```
+
+If for any reason the call was unsuccessful, the root `rate` will be nil, and the unlocatable rate(s) will also be nil.
+
 ### CLI
 Get foreign exchange rates on the command line with the following command:
 
