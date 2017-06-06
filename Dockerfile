@@ -14,5 +14,6 @@ WORKDIR /usr/src/app
 RUN bundle install
 
 COPY . /usr/src/app/
+RUN rake install
 
 CMD rake test

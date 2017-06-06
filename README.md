@@ -7,6 +7,7 @@ Uses last daily feed from [European Central Bank](http://www.ecb.europa.eu/stats
 An example of this gem in use can be found at [FxPotatoWeb](https://fxpotatoweb.herokuapp.com/). Source code for the site is [here](https://github.com/Angry-Potato/fxpotatoweb).
 
 [Available on RubyGems.org](https://rubygems.org/gems/fxpotato)
+[And on DockerHub](https://hub.docker.com/r/angrypotato/fx-potato/)
 
 ## Installation
 
@@ -23,6 +24,22 @@ And then execute:
 Or install it yourself as:
 
     $ gem install fxpotato
+
+Or to just play around with the CLI, using docker, pull the latest image:
+
+    $ docker pull angrypotato/fx-potato
+
+And run it like this:
+
+```
+$ docker run angrypotato/fx-potato:latest fxpotato
+Commands:
+  fxpotato getrate BASE TARGET  # Gets the foreign exchange rate for the give...
+  fxpotato help [COMMAND]       # Describe available commands or one specific...
+
+$ docker run angrypotato/fx-potato:latest fxpotato getrate GBP USD -d 2017-06-02
+Exchange rate from GBP(0.87268) to USD(1.1217) on 2017-06-02: 1.2853508731722967
+```
 
 ### Configuration
 FxPotato takes rates from the [ECB website](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml). It then saves this data into a `rates.xml` file under the `data` directory in the root of your project. To configure either of those destinations, set the corresponding environment variables:
