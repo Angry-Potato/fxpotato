@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Foreign Exchange currency rates looker-upper.}
   spec.description   = %q{Uses last daily feed from European Central Bank website, and exposes a simple interface to get the conversion rates for one currency to another on a given day.}
   spec.homepage      = "https://github.com/Angry-Potato/fxpotato"
+  spec.metadata      = { "source_code" => "https://github.com/Angry-Potato/fxpotato" }
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|

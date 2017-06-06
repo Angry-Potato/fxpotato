@@ -1,8 +1,8 @@
 # FxPotato
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fxpotato`. To experiment with that code, run `bin/console` for an interactive prompt.
+The Foreign Exchange currency rates looker-upper. Potato style.
 
-TODO: Delete this and the text above, and describe your gem
+Uses last daily feed from European Central Bank website, and exposes a simple interface to get the conversion rates for one currency to another on a given day.
 
 ## Installation
 
@@ -22,7 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### CLI
+Get foreign exchange rates on the command line with the following command:
+
+```
+fxpotato getrate <base_currency> <target_currency> -d <YYYY-MM-DD>
+
+e.g.
+fxpotato getrate GBP USD -d 2017-06-02
+```
+
+The `-d` option is not required, and will default to today if not specified.
 
 ## Development
 
