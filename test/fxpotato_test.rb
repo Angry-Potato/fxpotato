@@ -32,6 +32,12 @@ class FxPotatoTest < Minitest::Test
     assert_equal expected_02_GBP_to_USD, actual
   end
 
+  def test_at_is_case_insensitive
+    expected_02_GBP_to_USD = FxPotato::RateCalculator.calculate(GBP_06_02, USD_06_02)
+    actual = FxPotato.at(Date.new(2017, 6, 2), 'GbP', 'usd')['rate']
+    assert_equal expected_02_GBP_to_USD, actual
+  end
+
   def test_at_returns_nil_rates_on_unfound_data
     assert_nil FxPotato.at(Date.new(3333, 6, 2), 'GBP', 'USD')['rate']
     assert_nil FxPotato.at(Date.new(2017, 6, 2), 'narp', 'USD')['base']['rate']

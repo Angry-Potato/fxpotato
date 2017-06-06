@@ -9,6 +9,9 @@ require "fxpotato/railtie" if defined?(Rails)
 
 module FxPotato
   def self.at(date, base_key, target_key)
+    base_key = upcase_if_not_nil(base_key)
+    target_key = upcase_if_not_nil(target_key)
+
     base_rate = RateStore.get(self.repo, date, base_key)
     target_rate = RateStore.get(self.repo, date, target_key)
 
@@ -27,6 +30,10 @@ module FxPotato
     Dir.mkdir data_dir if !File.exists? data_dir
     destination = File.join(data_dir, DATA_FILE)
     RateFetcher.fetch(Paths.data_source_url, destination)
+  end
+
+  def self.upcase_if_not_nil(str)
+    str.nil? ? nil : str.upcase
   end
 
   module_function
