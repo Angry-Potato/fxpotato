@@ -20,8 +20,22 @@ Or install it yourself as:
 
     $ gem install fxpotato
 
-## Usage
+### Configuration
+FxPotato takes rates from the [ECB website](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml).
 
+To change the feed, set the `FXPOTATO_DATA_SOURCE_URL` environment variable to the new URL, and if the structure of the xml is different (or indeed not XML at all, which is also totes cool), set `FxPotato.repo` to equal an instance of a custom class of your own writing for locating rates in the new structure. Make sure to set `FxPotato.repo = YourClass.new` before you use the other functionality in `FxPotato`.
+
+The `repo` class you write must implement the `find` method with this signature:
+
+```
+def find(date = Date object, currency = Currency key, e.g. 'GBP')
+  // your wonderful code here
+end
+```
+
+If using the crontab functionality, configure your own schedule by editing the `config/schedule.rb` file, as per the [whenever documentation](https://github.com/javan/whenever#example-schedulerb-file).
+
+## Usage
 ### CLI
 Get foreign exchange rates on the command line with the following command:
 
