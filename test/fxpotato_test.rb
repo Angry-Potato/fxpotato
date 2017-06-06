@@ -49,5 +49,6 @@ class FxPotatoTest < Minitest::Test
     assert_nil FxPotato.at('GBP', 'USD', Date.new(3333, 6, 2))['rate']
     assert_nil FxPotato.at('narp', 'USD', Date.today)['base']['rate']
     assert_nil FxPotato.at('GBP', 'nil', Date.today)['target']['rate']
+    assert_nil FxPotato.at('GBP', 1, Date.today)['target']['rate']
   end
 end

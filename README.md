@@ -4,6 +4,8 @@ The Foreign Exchange currency rates looker-upper. Potato style.
 
 Uses last daily feed from European Central Bank website, and exposes a simple interface to get the conversion rates for one currency to another on a given day.
 
+[Available on RubyGems.org](https://rubygems.org/gems/fxpotato)
+
 ## Installation
 
 Add this line to your application's Gemfile:

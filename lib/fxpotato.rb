@@ -35,7 +35,7 @@ module FxPotato
   end
 
   def self.upcase_if_not_nil(str)
-    str.nil? ? nil : str.upcase
+    str.nil? || !str.is_a?(String) ? nil : str.upcase
   end
 
   module_function
