@@ -21,7 +21,8 @@ Or install it yourself as:
     $ gem install fxpotato
 
 ### Configuration
-FxPotato takes rates from the [ECB website](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml).
+FxPotato takes rates from the [ECB website](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml). It then saves this data into a `rates.xml` file under the `data` directory in the root of your project. To configure either of those destinations, set the corresponding environment variables:
+`FXPOTATO_DATA_DIR` and `DATA_FILE`.
 
 To change the feed, set the `FXPOTATO_DATA_SOURCE_URL` environment variable to the new URL, and if the structure of the xml is different (or indeed not XML at all, which is also totes cool), set `FxPotato.repo` to equal an instance of a custom class of your own writing for locating rates in the new structure. Make sure to set `FxPotato.repo = YourClass.new` before you use the other functionality in `FxPotato`.
 
@@ -36,6 +37,13 @@ end
 If using the crontab functionality, configure your own schedule by editing the `config/schedule.rb` file, as per the [whenever documentation](https://github.com/javan/whenever#example-schedulerb-file).
 
 ## Usage
+### Crontab
+FxPotato comes with optional crontab functionality to keep itself up to date. To enable the cron job, run the rake task `rake fxpotato:update_crontab`. Then verify the job is in your crontab by running `crontab -l`.
+
+If you decide this was a big mistake and wish to purify your crontab of fxpotato, then run the rake task `rake fxpotato:clear_crontab`, and verify again.
+
+The details of the cron job is configurable, as mentioned before, by editing the `config/schedule.rb` file as per the [whenever documentation](https://github.com/javan/whenever#example-schedulerb-file).
+
 ### CLI
 Get foreign exchange rates on the command line with the following command:
 
